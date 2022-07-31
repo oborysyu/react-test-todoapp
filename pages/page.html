@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Page</title>
+  <meta name="description" content="My Page Description">
+  <link rel="stylesheet" href="page.css">
+  <!--import emoji js/css here-->
+  <script src="https://www.cssscript.com/demo/tiny-emoji-picker/src/emojibuttonlistjs.js"></script>
+  <link rel="stylesheet" href="https://www.cssscript.com/demo/tiny-emoji-picker/src/emojibuttonlistjs.css" />
+</head>
+<body>
+
+	<div id="root" style="box-sizing: border-box;">
+		<div class="left_navbar">
+		</div>
+		<div class="main_panel">
+		<div class="main_panel_title">
+			<span class="main_panel_title-back">Назад</span>
+				<div style="display: flex; column-gap: 17px;">
+					<a class="blue-button" href="" target="_blanc">Тест</a>
+					<a class="white-button" href="" target="_blanc">Опублікувати в боті</a>				
+				</div>
+			</div>			
+		</div>
+		<div class="main_panel_grid">
+		<div class="main_panel_grid_item1">
+			<div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)">
+				Drop here
+			</div>
+		</div>
+		<div class="main_panel_grid_item2">
+			<div class="main_panel_grid_item2-content">
+			<div> <b>Головне меню </b>
+			<div style="font-size: smaller;">Текст і кнопки основних функцій, які постійно відображатимуться при відкритті чату з ботом</div>
+			</div>
+			<button class="accordion"><b>Повідомлення для клієнта</b></button>
+				<div class="panel">
+					<div style="display:flex;align-items: flex-end;">
+					  <textarea id="emojitextarea">Привіт &#128516; Щоб перейти до головного меню бота, натисніть кнопку внизу "Поділитись номером"</textarea>
+					  <button id="picker">&#128516;</button>
+					</div>
+				</div>
+				<button class="accordion"><b>Кнопки навігації</b></button>
+				<div class="panel">
+				  <input type="text" maxlength="40" placeholder="Введіть назву кнопки (макс. 40 символів)">
+				  <div style="display: flex;flex-flow: row nowrap;height: 100%;">
+					  <label for="onPressing">Дія при натисканні</label>
+					  <label for="buttonFor">Відображати кнопку для</label>
+				  </div>
+				  <div style="display: flex;flex-flow: row nowrap;height: 100%;">
+					
+					<select name="onPressing">
+					  <option>Перейти далі</option>
+					  <option>Перейти за посиланням</option>
+					  <option>1 крок назад</option>
+					  <option>У головне меню</option>
+					  <option>Підтвердити і перейти</option>
+					  <option>Відмінити і перейти</option>
+					  <option>Повернутись і редагувати</option>						  
+					</select>
+					
+					<select name="buttonFor">
+					  <option>Клієнти</option>
+					  <option>Менеджери</option>
+					  <option>HR</option>
+					  <option>Всі</option>
+					</select>					
+				  </div>
+				  <div style="display:flex;flex-direction: row-reverse;">
+					<a href="" target="_blank" style="font-size: smaller;">Видалити кнопку</a>
+				  </div>
+				  <input type="text" maxlength="40" placeholder="Введіть назву кнопки (макс. 40 символів)">
+				  <div style="display: flex;flex-flow: row nowrap;height: 100%;">
+					  <label for="onPressing">Дія при натисканні</label>
+				  </div>
+				  <div style="display: flex;flex-flow: row nowrap;height: 100%;">
+					<select name="onPressing">
+					  <option>Перейти далі</option>
+					  <option>Перейти за посиланням</option>
+					  <option>1 крок назад</option>
+					  <option>У головне меню</option>
+					  <option>Підтвердити і перейти</option>
+					  <option>Відмінити і перейти</option>
+					  <option>Повернутись і редагувати</option>						  
+					</select>
+				  </div>
+				  <div style="display:flex;flex-direction: row-reverse;">
+					<a href="" target="_blank" style="font-size: smaller;">Видалити кнопку</a>
+				  </div>
+				  <div style="display:flex;flex-direction: row;">
+					<a href="" target="_blank" style="font-size: smaller;">+ Додати кнопку</a>
+				  </div>				  
+				</div>
+				
+				<button class="accordion"><b>Розміщення кнопок</b></button>
+				<div class="panel">
+				  <div style="display: flex;flex-direction: column;">
+					  <div class="draggable" draggable="true" ondragstart="drag(event)" id="first_option">Переглянути баланс і отримати бонуси </div>
+					  <div class="draggable" draggable="true" ondragstart="drag(event)" id="second_option">Переглянути баланс</div>
+					  <div class="draggable" draggable="true" ondragstart="drag(event)" id="third_option">Доступні послуги</div>
+					  <div class="draggable" draggable="true" ondragstart="drag(event)" id="fourth_option">Поділитись ботом &#128516;</div>
+				  </div>
+				</div>
+				<button class="accordion"><b>Налаштування груп користувачів</b></button>
+				<div class="panel">
+				  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>				
+			</div>
+		</div>
+		</div>		
+		</div>		
+	</div>
+	<!--Emoji picker-->	
+	<script>
+		const instance = new emojiButtonList( "picker", {
+		  textBoxID: "emojitextarea"
+		})
+		const accordions = document.getElementsByClassName("accordion");
+
+		for (let i = 0; i < accordions.length; i++) {
+		  accordions[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var panel = this.nextElementSibling;
+			if (panel.style.display === "block") {
+			  panel.style.display = "none";
+			} else {
+			  panel.style.display = "block";
+			}
+		  });
+		}
+	</script>
+	<!--Drag-n-drop-->
+	<script>
+		function allowDrop(ev) {
+		  ev.preventDefault();
+		}
+		function drag(ev) {
+		  ev.dataTransfer.setData("text", ev.target.id);
+		}
+
+		function drop(ev) {
+		  ev.preventDefault();
+		  var data = ev.dataTransfer.getData("text");
+		  ev.target.appendChild(document.getElementById(data));
+		}
+	</script>
+</body>
+</html>
